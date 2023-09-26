@@ -4,4 +4,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true"> </ion-content>
+<ion-content [fullscreen]="true">
+  <swiper-container>
+    <swiper-slide *ngFor="let img of (photo.photos)">
+      <img [src]="img.url" />
+    </swiper-slide>
+  </swiper-container>
+</ion-content>
