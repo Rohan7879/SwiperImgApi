@@ -9,10 +9,7 @@ register();
   styleUrls: ['tab2.page.scss'],
 })
 export class Tab2Page {
-  mySwiper = new Swiper('.swiper-container', {
-    loop: true,
-    direction: 'vertical',
-  });
+  mySwiper = new Swiper('.swiper-container', {});
   constructor(private http: HttpClient) {}
   ngOnInit() {
     this.data();
