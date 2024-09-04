@@ -1,34 +1,42 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-// import { register } from 'swiper/element/bundle';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import formFields from '../../my-form.json';
 
-// register();
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page implements OnInit {
-  // constructor(private http: HttpClient) {}
-  ngOnInit() {
-    //   this.data();
+  myForm: FormGroup;
+  fields: [] | any;
+  array = [];
+  jsonData: any;
+
+  constructor(private formBuilder: FormBuilder) {
+    this.fields = formFields.fields;
   }
 
-  // images = ['https://unsplash.com/photos/random'];
-  // images = [
-  //   'https://images.unsplash.com/photo-1501594907352-04cda38ebc29',
-  //   'https://images.unsplash.com/photo-1501594907352-04cda38ebc29',
-  // ];
-  // photo: any = '';
-  // data() {
-  //   let json = this.http
-  //     .get('https://api.slingacademy.com/v1/sample-data/photos')
-  //     .subscribe((res) => {
-  //       this.photo = res;
-  //       console.log(res);
-  //     });
+  ngOnInit() {
+    this.myForm = this.formBuilder.group({});
+    this.fields.forEach((field) => {
+      const validators = field.required ? [Validators.required] : [];
+      this.myForm.addControl(
+        field.label,
+        this.formBuilder.control('', validators)
+      );
+    });
+  }
 
-  //   // console.log(json);
-  //   return json;
-  // }
+  onSubmit() {
+    if (this.myForm.valid) {
+      console.log('Form submitted successfully:', this.myForm.value);
+      this.array.push(this.myForm.value);
+      this.jsonData = JSON.stringify(this.myForm.value);
+      console.log(this.array);
+      console.log(this.jsonData);
+    } else {
+      console.log('Please fill in all required fields.');
+    }
+  }
 }

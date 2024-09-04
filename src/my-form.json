@@ -1,0 +1,38 @@
+{
+  "fields": [
+    {
+      "key": "Name",
+      "type": "text",
+      "label": "Name",
+      "placeholder": "Enter Your Name",
+      "required": true
+    },
+    {
+      "type": "email",
+      "label": "Email",
+      "placeholder": "Enter Your Email",
+      "required": true
+    },
+    {
+      "type": "password",
+      "label": "Password",
+      "placeholder": "Enter Your Password",
+      "required": true
+    },
+    {
+      "type": "select",
+      "label": "Gender",
+      "placeholder": "Select Your Gender",
+      "options": ["Male", "Female", "Other"],
+      "required": true
+    }
+  ],
+  "file": [
+    {
+      "type": "LastName",
+      "label": "LastName",
+      "placeholder": "Enter Your LastName",
+      "required": true
+    }
+  ]
+}

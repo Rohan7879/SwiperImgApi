@@ -14,12 +14,6 @@ export class Tab2Page {
   ngOnInit() {
     this.data();
   }
-
-  // images = ['https://unsplash.com/photos/random'];
-  // images = [
-  //   'https://images.unsplash.com/photo-1501594907352-04cda38ebc29',
-  //   'https://images.unsplash.com/photo-1501594907352-04cda38ebc29',
-  // ];
   photo: any = '';
   data() {
     let json = this.http

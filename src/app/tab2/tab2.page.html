@@ -8,6 +8,10 @@
   <swiper-container>
     <swiper-slide *ngFor="let img of (photo.photos)">
       <img [src]="img.url" />
+    <ion-label>{{img.id}}</ion-label>
+    <hr>
+    <ion-label>{{img.description}}</ion-label>
     </swiper-slide>
   </swiper-container>
 </ion-content>
+ 

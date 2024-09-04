@@ -1,19 +1,61 @@
-<!-- <ion-header [translucent]="true">
+<ion-header [translucent]="true">
   <ion-toolbar color="primary">
-    <ion-title> Tab 1 </ion-title>
+    <ion-title><form></form></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <swiper-container
-    loop="true"
-    pagination="true"
-    pagination-clickable="true"
-    navigation="true"
-  >
-    <swiper-slide *ngFor="let img of (photo.photos)">
-      <p>{{img.url}}</p>
-      <img [src]="img.url" />
-    </swiper-slide>
-  </swiper-container>
-</ion-content> -->
+  <router-outlet></router-outlet>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item *ngFor="let field of fields">
+        <ion-label position="floating">{{ field.label }}</ion-label>
+        <div [ngSwitch]="field.type">
+          <ion-input
+            *ngSwitchCase="'text'"
+            [type]="field.type"
+            [placeholder]="field.placeholder"
+            [formControlName]="field.label"
+            [required]="field.required"
+          ></ion-input>
+          <ion-input
+            *ngSwitchCase="'email'"
+            [placeholder]="field.placeholder"
+            [type]="field.type"
+            [formControlName]="field.label"
+            [required]="field.required"
+          ></ion-input>
+          <ion-input
+            *ngSwitchCase="'password'"
+            [type]="field.type"
+            [placeholder]="field.placeholder"
+            [formControlName]="field.label"
+            [required]="field.required"
+          ></ion-input>
+          <ion-list>
+            <ion-item *ngSwitchCase="'select'">
+              <ion-select
+                aria-label="Age"
+                value=""
+                [placeholder]="field.placeholder"
+                [formControlName]="field.label"
+                [required]="field.required"
+              >
+                <ion-select-option value="Male">Male</ion-select-option>
+                <ion-select-option value="Female">Female</ion-select-option>
+                <ion-select-option value="Other">Other</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-item>
+    </ion-list>
+    <ion-button [routerLink]="['form1']" type="submit" expand="full"
+      >Next</ion-button
+    >
+    <ion-button [disabled]="!myForm.valid" expand="full" type="submit"
+      >Submit</ion-button
+    >
+  </form>
+  {{ jsonData | json }}
+</ion-content>
